@@ -29,7 +29,7 @@ const LoginForm = () => {
 
     try {
       const response = await loginUser(userFormData);
-
+      console.log(userFormData)
       if (!response.ok) {
         throw new Error('something went wrong!');
       }
@@ -52,7 +52,11 @@ const LoginForm = () => {
   return (
     <>
       <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
-        <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
+        <Alert 
+        dismissible onClose={() => setShowAlert(false)} 
+        show={showAlert} 
+        variant='danger'
+        >
           Something went wrong with your login credentials!
         </Alert>
         <Form.Group>

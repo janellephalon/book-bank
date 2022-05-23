@@ -58,10 +58,11 @@ THEN I am logged out of the site and presented with a menu with the options Sear
 ## Installation
 ` git clone ` <br>
 ` npm intall ` <br>
-` npm run watch `
+` cd client ` <br>
+` start `
 
 ## Usage
-` npm run watch `
+` npm `
 
 ## Demo
 [Video Demonstration]()

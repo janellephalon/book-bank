@@ -7,13 +7,17 @@ import Auth from '../utils/auth';
 
 const SignupForm = () => {
   // set initial form state
-  const [userFormData, setUserFormData] = useState({ username: '', email: '', password: '' });
+  const [userFormData, setUserFormData] = useState({ 
+    username: '', 
+    email: '', 
+    password: '' 
+  });
   // set state for form validation
   const [validated] = useState(false);
   // set state for alert
   const [showAlert, setShowAlert] = useState(false);
   // define mutation
-  const [createUser] = useMutation[ADD_USER];
+  const [createUser] = useMutation(ADD_USER);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -29,7 +33,7 @@ const SignupForm = () => {
       event.preventDefault();
       event.stopPropagation();
     }
-
+    console.log(userFormData);
     try {
       const response = await createUser(userFormData);
 
@@ -100,7 +104,11 @@ const SignupForm = () => {
           <Form.Control.Feedback type='invalid'>Password is required!</Form.Control.Feedback>
         </Form.Group>
         <Button
-          disabled={!(userFormData.username && userFormData.email && userFormData.password)}
+          disabled={!(
+            userFormData.username && 
+            userFormData.email && 
+            userFormData.password
+            )}
           type='submit'
           variant='success'>
           Submit
