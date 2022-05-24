@@ -16,7 +16,7 @@ module.exports = {
     }
     
     if (!token) {
-      return req
+      return { message: "You have no token!"}
     }
 
     // verify token and get user data out of it
@@ -29,7 +29,7 @@ module.exports = {
     }
 
     // send to next endpoint
-    return req
+    return req;
   },
   signToken: function ({ username, email, _id }) {
     const payload = { username, email, _id };

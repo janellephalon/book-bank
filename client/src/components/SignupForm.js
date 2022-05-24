@@ -10,14 +10,14 @@ const SignupForm = () => {
   const [userFormData, setUserFormData] = useState({ 
     username: '', 
     email: '', 
-    password: '' 
+    password: ''
   });
   // set state for form validation
   const [validated] = useState(false);
   // set state for alert
   const [showAlert, setShowAlert] = useState(false);
   // define mutation
-  const [createUser] = useMutation(ADD_USER);
+  const [addUser, {error}] = useMutation(ADD_USER);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -33,19 +33,16 @@ const SignupForm = () => {
       event.preventDefault();
       event.stopPropagation();
     }
+
     console.log(userFormData);
     try {
-      const response = await createUser(userFormData);
+      const { data } = await addUser({
+        variables: { ...userFormData },
+      });
 
-      if (!response.ok) {
-        throw new Error('something went wrong!');
-      }
-
-      const { token, user } = await response.json();
-      console.log(user);
-      Auth.login(token);
+      Auth.login(data.addUser.token);
     } catch (err) {
-      console.error(err);
+      console.error(error);
       setShowAlert(true);
     }
 
@@ -55,13 +52,18 @@ const SignupForm = () => {
       password: '',
     });
   };
+ 
 
   return (
     <>
       {/* This is needed for the validation functionality above */}
       <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
         {/* show alert if server response is bad */}
-        <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
+        <Alert 
+        dismissible 
+        onClose={() => setShowAlert(false)} 
+        show={showAlert} variant='danger'
+        >
           Something went wrong with your signup!
         </Alert>
 
@@ -75,7 +77,9 @@ const SignupForm = () => {
             value={userFormData.username}
             required
           />
-          <Form.Control.Feedback type='invalid'>Username is required!</Form.Control.Feedback>
+          <Form.Control.Feedback type='invalid'>
+            Username is required!
+          </Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group>
@@ -101,7 +105,9 @@ const SignupForm = () => {
             value={userFormData.password}
             required
           />
-          <Form.Control.Feedback type='invalid'>Password is required!</Form.Control.Feedback>
+          <Form.Control.Feedback type='invalid'>
+            Password is required!
+            </Form.Control.Feedback>
         </Form.Group>
         <Button
           disabled={!(
@@ -119,3 +125,4 @@ const SignupForm = () => {
 };
 
 export default SignupForm;
+
