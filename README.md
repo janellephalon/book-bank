@@ -57,18 +57,17 @@ THEN I am logged out of the site and presented with a menu with the options Sear
 
 ## Installation
 ` git clone ` <br>
-` npm intall ` <br>
-` cd client ` <br>
-` start `
+` npm install ` <br>
+` npm run develop ` 
 
 ## Usage
-` npm `
+` npm run develop `
 
-## Demo
-[Video Demonstration]()
+## Demo 
+
 
 ## Deployed Link 
-[Deployed Link though Heroku]() 
+[Deployed Link though Heroku](https://tranquil-harbor-74050.herokuapp.com/) 
 
 ## Contributors
 [Janelle Phalon](https://github.com/janellephalon) - Columbia University Coding Bootcamp 

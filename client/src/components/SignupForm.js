@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
-import { Form, Button, Alert } from 'react-bootstrap';
-
+import { 
+  Form, 
+  Button, 
+  Alert 
+} from 'react-bootstrap';
 import { useMutation } from '@apollo/react-hooks';
 import { ADD_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
@@ -17,7 +20,7 @@ const SignupForm = () => {
   // set state for alert
   const [showAlert, setShowAlert] = useState(false);
   // define mutation
-  const [addUser, {error}] = useMutation(ADD_USER);
+  const [addUser] = useMutation(ADD_USER);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -42,7 +45,7 @@ const SignupForm = () => {
 
       Auth.login(data.addUser.token);
     } catch (err) {
-      console.error(error);
+      console.error(err);
       setShowAlert(true);
     }
 
@@ -62,7 +65,8 @@ const SignupForm = () => {
         <Alert 
         dismissible 
         onClose={() => setShowAlert(false)} 
-        show={showAlert} variant='danger'
+        show={showAlert} 
+        variant='danger'
         >
           Something went wrong with your signup!
         </Alert>
@@ -110,11 +114,13 @@ const SignupForm = () => {
             </Form.Control.Feedback>
         </Form.Group>
         <Button
-          disabled={!(
+          disabled={
+            !(
             userFormData.username && 
             userFormData.email && 
             userFormData.password
-            )}
+            )
+          }
           type='submit'
           variant='success'>
           Submit

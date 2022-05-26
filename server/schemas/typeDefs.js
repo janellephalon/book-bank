@@ -6,7 +6,6 @@ const typeDefs = gql `
         description: String
         bookId: String
         image: String
-        forSale: String
         link: String
         title: String
     }
@@ -33,7 +32,6 @@ const typeDefs = gql `
         description: String
         bookId: String
         image: String
-        forSale: String
         link: String
         title: String
     }
@@ -42,7 +40,7 @@ const typeDefs = gql `
         login(email: String!, password: String!): Auth
         addUser(username: String!, email: String!, password: String!) : Auth
         removeBook(bookId: String!): User
-        saveBook(input: SavedBookInput): ID!
+        saveBook(input: SavedBookInput): User
     }
 `;
 
