@@ -64,7 +64,9 @@ THEN I am logged out of the site and presented with a menu with the options Sear
 ` npm run develop `
 
 ## Demo 
-
+<img width="1181" alt="Screen Shot 2022-05-26 at 4 50 43 PM" src="https://user-images.githubusercontent.com/95178236/170578218-0900b60e-120a-4862-8a0a-f85ec80e8b69.png">
+<br>
+<img width="1189" alt="Screen Shot 2022-05-26 at 4 51 02 PM" src="https://user-images.githubusercontent.com/95178236/170578256-6eb89ffe-7829-42ea-b26c-f69b63037137.png">
 
 ## Deployed Link 
 [Deployed Link though Heroku](https://tranquil-harbor-74050.herokuapp.com/) 
